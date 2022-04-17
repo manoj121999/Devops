@@ -1,11 +1,10 @@
 # Build a JAR File
 FROM maven:3.6.3-jdk-8-slim AS stage1
-WORKDIR /home/app
+WORKDIR /home/app/
 COPY . /home/app/
-RUN mvn -f /home/app/pom.xml clean package
+RUN mvn -f /home/app/pom.xml clean install package
 
-# Create an Image
-FROM openjdk:8-jdk-alpine
-EXPOSE 5000
-COPY --from=stage1 /home/app/target/sample.jar sample.jar
-ENTRYPOINT ["sh", "-c", "java -jar /sample.jar"]
+FROM tomcat:9.0
+COPY --from=stage1 /home/app/target/sample.war /usr/local/tomcat/webapps/sample.war
+
+
