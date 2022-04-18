@@ -8,3 +8,4 @@ FROM tomcat:9.0
 COPY --from=stage1 /home/app/target/sample.war /usr/local/tomcat/webapps/sample.war
 
 
+
