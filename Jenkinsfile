@@ -10,9 +10,9 @@ pipeline {
                 sh 'sudo docker build -t testimage .'
             }
         }
-        stage('Test') {
+        stage('Pushing to ECR') {
             steps {
-                echo 'Testing..'
+                sh 'sudo docker tag testimage public.ecr.aws/m4p7d9s0/test'
             }
         }
         stage('Deploy') {
