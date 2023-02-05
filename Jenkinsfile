@@ -7,7 +7,7 @@ pipeline {
                 sh 'cd $WORKSPACE'
                 sh 'pwd' 
                 echo 'Building..'
-                sh 'sudo docker build .'
+                sh 'sudo docker build -t Test .'
             }
         }
         stage('Test') {
