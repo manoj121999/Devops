@@ -12,7 +12,8 @@ pipeline {
         }
         stage('Pushing to ECR') {
             steps {
-                sh 'sudo docker tag testimage public.ecr.aws/m4p7d9s0/test'
+                sh 'sudo docker tag testimage:latest public.ecr.aws/m4p7d9s0/test:latest'
+                sh 'sudo docker push public.ecr.aws/m4p7d9s0/test:latest'
             }
         }
         stage('Deploy') {
