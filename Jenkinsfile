@@ -19,6 +19,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh '''
+                bash $WORKSPACE/deploy.sh
+                '''
               
 
             }
