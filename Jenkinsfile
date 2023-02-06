@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh '''
-               sudo aws ecs list-tasks --cluster DEMO --service-name Demo_app --desired-status RUNNING --output text |awk '{print $2}'
+               Task="sudo aws ecs list-tasks --cluster DEMO --service-name Demo_app --desired-status RUNNING --output text |awk '{print $2}'"
                 sudo aws ecs stop-task --cluster DEMO --task $Task
                 '''
             }
