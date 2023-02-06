@@ -20,6 +20,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh '''
+                chmod +x deploy.sh
                 bash $WORKSPACE/deploy.sh
                 '''
               
