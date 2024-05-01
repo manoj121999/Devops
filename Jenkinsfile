@@ -12,8 +12,8 @@ pipeline {
         }
         stage('Pushing to ECR') {
             steps {
-                sh 'sudo docker tag testimage:latest public.ecr.aws/m4p7d9s0/test:latest'
-                sh 'sudo docker push public.ecr.aws/m4p7d9s0/test:latest'
+                sh 'sudo docker tag testimage:latest public.ecr.aws/s2v4m4w7/capstone-sgpa:v1'
+                sh 'sudo docker push public.ecr.aws/s2v4m4w7/capstone-sgpa:v1'
             }
         }
         stage('Deploy') {
