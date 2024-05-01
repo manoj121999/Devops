@@ -32,6 +32,5 @@ spec:
   type: NodePort
   ports:
   - protocol: TCP
-    port: 30001
-    targetPort: 8080
+    port: 8080
     nodePort: 30001
