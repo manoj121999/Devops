@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-spga
+  labels:
+    app: spga
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spga
+  template:
+    metadata:
+      labels:
+        app: spga 
+    spec:
+      containers:
+      - name: capstone-spga
+        image: manoj8795/app:v1
+        ports:
+        - containerPort: 8080
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: capstone-service
+spec:
+  selector:
+    app: spga
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 30001
+    targetPort: 8080
+    nodePort: 30001
