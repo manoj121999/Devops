@@ -19,7 +19,7 @@ pipeline {
        stage('Deploy deployment and service file') {
             steps {
                 script {
-                    kubernetesDeploy configs: 'webapp.yaml', kubeconfigId: 'k8s'
+                    kubernetesDeploy configs: 'webapp.yaml', kubeconfigId: 'k8s-file'
                 }
             }
         }
