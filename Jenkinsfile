@@ -16,15 +16,11 @@ pipeline {
                 sh 'sudo docker push manoj8795/app:jenkins'
             }
         }
-        stage('Deploy') {
+       stage('Deploy deployment and service file') {
             steps {
-                echo 'Deploying....'
-                sh '''
-                chmod +x deploy.sh
-                bash $WORKSPACE/deploy.sh
-                '''
-              
-
+                script {
+                    kubernetesDeploy configs: 'webapp.yaml', kubeconfigId: 'k8s'
+                }
             }
         }
     }
