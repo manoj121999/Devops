@@ -16,12 +16,12 @@ pipeline {
                 sh 'sudo docker push manoj8795/app:jenkins'
             }
         }
-       stage('Deploy deployment and service file') {
-            steps {
-                script {
-                    kubernetesDeploy configs: 'webapp.yaml', kubeconfigId: 'kubernetes'
-                }
-            }
+       stage('Deploying App to Kubernetes') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "webapp.yaml", kubeconfigId: "kubernetes")
         }
+      }
+    }
     }
 }
