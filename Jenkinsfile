@@ -20,7 +20,7 @@ pipeline {
       steps {
         script {
           kubeconfig(credentialsId: 'rolebind', serverUrl: 'https:17.2.1.202:6443') {
-    kubectl apply -f webapp.yaml
+    sh 'kubectl apply -f webapp.yaml'
 }
         }
       }
