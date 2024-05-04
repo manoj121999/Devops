@@ -18,6 +18,7 @@ pipeline {
                 sh 'sudo docker push manoj8795/app:jenkins'
             }
         }
+        }
        stage('Deploying App to Kubernetes') {
       steps {
         sshagent(['k8s-cluster']) {
