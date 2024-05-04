@@ -44,7 +44,7 @@ pipeline {
                 sh 'cd $WORKSPACE'
                 sh "scp -o StrictHostKeyChecking=no webapp.yaml ubuntu@${instanceIp}:/home/ubuntu/"
                 try{
-                    sh 'ssh ubuntu@${instanceIp} kubectl rollout restart deployment capstone-spga'
+                    sh "ssh ubuntu@${instanceIp} kubectl rollout restart deployment capstone-spga"
                 
                 }catch(error) {
                     sh "ssh ubuntu@${instanceIp} kubectl apply -f /home/ubuntu/webapp.yaml"
