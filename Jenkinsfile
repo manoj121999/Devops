@@ -19,7 +19,7 @@ pipeline {
        stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "webapp.yaml", kubeconfigId: "kubernetes")
+          kubernetesDeploy(configs: "webapp.yaml", kubeconfigId: "kuberntes")
         }
       }
     }
