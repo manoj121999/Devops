@@ -18,10 +18,17 @@ pipeline {
         }
        stage('Deploying App to Kubernetes') {
       steps {
-        script {
-          kubernetesDeploy configs: 'webapp.yaml', kubeconfigId: 'k8s-con', serverUrl: 'https://17.2.1.202:6443'
-
-        }
+        sshagent(['k8s-cluster']) {
+            sh 'cd $WORKSPACE'
+    sh "scp -o StrictHostKeyChecking=no webapp.yaml ubuntu@17.2.1.164:/home/ubuntu/"
+            script {
+                try{
+                    sh "ssh ubuntu@17.2.1.164 kubectl apply -f /home/ubuntu/webapp.yaml"
+                }catch {
+                    sh "ssh ubuntu@17.2.1.164 kubectl apply -f /home/ubuntu/webapp.yaml"
+                }
+            }
+}
       }
     }
     }
