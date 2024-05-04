@@ -24,7 +24,7 @@ pipeline {
             script {
                 try{
                     sh "ssh ubuntu@17.2.1.164 kubectl apply -f /home/ubuntu/webapp.yaml"
-                }catch {
+                }catch(error) {
                     sh "ssh ubuntu@17.2.1.164 kubectl apply -f /home/ubuntu/webapp.yaml"
                 }
             }
