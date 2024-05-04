@@ -19,8 +19,7 @@ pipeline {
        stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubeconfig(credentialsId: 'rolebind', serverUrl: 'https:17.2.1.202:6443') {
-    sh 'kubectl apply -f webapp.yaml'
+          kubernetesDeploy configs: 'webapp.yaml', kubeconfigId: 'k8s-con', serverUrl: 'https://17.2.1.202:6443']
 }
         }
       }
