@@ -22,13 +22,13 @@ pipeline {
       steps {
         sshagent(['k8s-cluster']) {
             sh 'cd $WORKSPACE'
-    sh "scp -o StrictHostKeyChecking=no webapp.yaml ubuntu@17.2.1.164:/home/ubuntu/"
+    sh "scp -o StrictHostKeyChecking=no webapp.yaml ubuntu@17.2.1.217:/home/ubuntu/"
             script {
                 try{
-                    sh 'ssh ubuntu@17.2.1.164 kubectl rollout restart deployment capstone-spga'
+                    sh 'ssh ubuntu@17.2.1.217 kubectl rollout restart deployment capstone-spga'
                 
                 }catch(error) {
-                    sh "ssh ubuntu@17.2.1.164 kubectl apply -f /home/ubuntu/webapp.yaml"
+                    sh "ssh ubuntu@17.2.1.217 kubectl apply -f /home/ubuntu/webapp.yaml"
                 }
             }
 }
