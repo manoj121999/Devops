@@ -13,7 +13,7 @@ pipeline {
         stage('Pushing to DockerHub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh "sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                 sh 'sudo docker tag testimage:latest manoj8795/app:jenkins'
                 sh 'sudo docker push manoj8795/app:jenkins'
             }
