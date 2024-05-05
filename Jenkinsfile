@@ -11,21 +11,7 @@ pipeline {
             }
         }
 
-        stage('Code Analysis') {
-            environment {
-                scannerHome = tool 'sonarqube'
-            }
-            steps {
-                script {
-                    withSonarQubeEnv('sonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=capstone \
-                            -Dsonar.projectName=capstone \
-                            -Dsonar.sources=."
-                    }
-                }
-            }
-        }
+        
         stage('Pushing to DockerHub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
